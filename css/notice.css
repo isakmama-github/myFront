@@ -1,0 +1,17 @@
+#container {
+  background: url('../images/notice.jpg');
+  background-size: auto;
+  width: 250px;
+  height: 375px;
+  padding: 100px 50px;
+}
+* {  /* 전체 선택자 */
+  box-sizing: border-box;
+}
+body{  /* 문서 본문에 대한 스타일 */
+  display:flex;  /* 플렉스 컨테이너 */ 
+  justify-content: center;  /* 주축(수평) 정렬 */
+  align-items: center;    /* 교차축(수직) 정렬 */
+  margin:0;    /* 마진 */  
+  min-height: 100vh;  /* 최소 높이 */
+}
