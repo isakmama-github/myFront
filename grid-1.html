@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid 1</title>
+  <style>
+    #container {
+      display: grid;
+      /* grid-template-columns: 200px 200px 200px; */
+      /* grid-template-columns: 1fr 1fr 1fr; */
+      /* grid-template-columns: repeat(3, 1fr); */
+      /* grid-template-columns: repeat(auto-fit, 200px); */
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-rows: 30vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="items">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, est quos sequi voluptatibus dolore nam voluptate, ipsum blanditiis ullam porro impedit ipsa nihil minus laborum placeat recusandae dolorum quaerat velit?</div>
+    <div class="items">Esse, nulla saepe. Itaque molestias rerum consequuntur fugit quis consectetur eligendi repellendus est aliquam nisi. Quibusdam quo quidem ab explicabo ipsam commodi laboriosam minima quisquam! Ea tempore nesciunt et fugiat.</div>
+    <div class="items">Earum voluptatem aliquid illo aperiam. Dolorum modi cum dolorem, corporis ab ut blanditiis repellat facilis qui omnis enim voluptate debitis, aliquid eos voluptates vero illum explicabo eaque nemo, corrupti distinctio.</div>
+    <div class="items">Corrupti voluptatibus explicabo vel sapiente repudiandae impedit nulla, delectus mollitia libero doloribus rerum quas adipisci quaerat vero excepturi officiis ducimus sunt nesciunt, officia aut blanditiis. Aliquid dolorum explicabo suscipit facere.</div>
+    <div class="items">Modi iste et, provident laborum reiciendis illum, architecto hic, quaerat nisi porro molestias eius unde? Repellat reiciendis numquam commodi adipisci quod ea, expedita sunt. Modi in odio obcaecati dolorem tenetur?</div>
+  </div>
+</body>
+</html>
