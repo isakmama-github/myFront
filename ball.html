@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.onload = function(){
+      const NBALL = 200;
+      const R = 5;
+      const TIME_INTERVAL = 33;
+      const BACK_ALPHA = 0.3;
+      const canvas = document.getElementById('mycanvas');
+      const ctx = canvas.getContext('2d');
+      console.log(ctx);
+      const wall = { 
+        left: 0,
+        right: canvas.width,
+        top: 0,
+        bottom: canvas.height
+      };
+      let balls = [];
+      for(let i=0; i<NBALL; i++){
+        balls[i] = new Ball(wall.right/2, wall.bottom/2, R);
+        balls[i].setVelocityAsRandom(2, 7).setColorAsRandom(50,255); 
+      }
+    }
+
+  </script>
+</head>
+<body>
+  <canvas id="mycanvas" width="640" height="480"></canvas>
+</body>
+</html>

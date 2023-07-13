@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let card1 = { suit: "하트", rank:"A"}
+    console.log(card1);
+    console.log(card1.suit);
+    console.log(card1['suit']);
+
+    function Card(suit, rank){
+      this.suit = suit;
+      this.rank = rank;
+    }
+    const card2 = new Card("클로버", "A");
+    console.log(card2);
+
+    //es5
+    const card3 = Object.create(Object.prototype, {
+      suit: {
+        value: "스페이드",
+        writable: true,
+        enumerable: true,
+        configurable: true
+      },
+      rank: {
+        value: "A",
+        writable: true,
+        enumerable: true,
+        configurable: true
+      }
+    });
+    console.log(card3);
+
+    // ec6
+    class Card2{
+      _suit = '';
+      _rank = '';
+
+      constructor(suit, rank){
+        this._suit = suit;
+        this._rank = rank;
+      }  
+      
+      get suit(){
+        return this._suit;
+      }
+      get rank(){
+        return this._rank;
+      }
+      set suit(value) {
+        const str = value;
+         this._suit = str;
+      }
+      set rank(value) {
+        this._rank = value;
+      }
+      print(){
+        console.log(`카드의 정보 ${this.suit} ${this.rank}`)
+        console.log(this.suit + this.rank);
+      }
+    }
+
+    const card4 = new Card2('다이아몬드', 'A');
+    console.log(card4);
+    card4.print();
+    console.log(card4.suit);
+    console.log(card4.rank);
+    card4.suit = '하트';
+    console.log(card4.suit);
+    card4.rank = "B";
+    console.log(card4.rank);
+
+    class Foo {
+      x = 1;
+      #p = 0;     // private
+      static y = 20;     // static public
+      static #sp = 30;   // static private
+
+      // Private static 필드는 class evaluation 시 
+      // class 생성자(class constructor)에 추가된다.
+      // Private static 필드는 해당 필드를 선언한 
+      // class 에서만 접근할 수 있다.
+
+      bar() {
+        this.#p = 10;
+        return this.#p;
+      }
+      static sbar(){
+        this.#sp = 100;
+        return this.#sp;
+      }
+    }
+
+    const foo = new Foo();
+    console.log(foo);
+    console.log(foo.bar());
+    // console.log(foo.#p);
+    console.log(foo.x);
+    console.log(Foo.y);
+    // console.log("Foo.sp : " + Foo.#sp);
+    console.log("Foo.sp : " + Foo.sbar());
+
+    let person = {
+      'first-name':'gildong',
+      'last-name': 'hong',
+      gender: 'mail'
+    };
+    console.log(person['first-name']);
+    person['first-name'] = 'java';
+    console.log(person['first-name']);
+
+    person.age = 20;
+    console.log(person.age);
+    console.log(person);
+
+    delete person.gender;
+    console.log(person);
+
+    for (let prop in person) {
+      console.log(prop + '; ' + person[prop]);
+    }
+  </script>
+</body>
+</html>

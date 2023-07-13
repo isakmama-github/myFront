@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      display: grid;
+      border-left: 1px solid gray;
+      border-top: 1px solid gray;
+      width: 65%;
+    }
+
+    #container>div {
+      padding: 10px;
+      border-right: 1px solid gray;
+      border-bottom: 1px solid gray;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>자리 배치도</h1>
+  <script>
+    let peopleNum = parseInt(prompt("입장객은 몇 명인가요?"));
+    let seatCol = parseInt(prompt("한줄에 몇명인가요?"));
+    let i;
+    document.write("<div id=\"container\">");
+    for (i = 1; i <= peopleNum; i++) {
+      document.write("<div id=\"div" + i + "\">좌석 " + i + "</div>");
+    }
+    
+    if (peopleNum % seatCol > 0) {
+      for (; i <= peopleNum + seatCol - peopleNum % seatCol; i++) {
+        if (i < peopleNum + seatCol - peopleNum % seatCol) {
+          document.write("<div id=\"div" + i + "\" style=\'border-right: none\'';></div>");
+        }
+        else {
+          document.write("<div id=\"div" + i + "\"';></div>");
+        }
+      }
+    }
+    document.write("</div>");
+    document.getElementById('container').style.gridTemplateColumns = 'repeat(' + seatCol + ', 1fr)';
+  </script>
+</body>
+
+</html>
