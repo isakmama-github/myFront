@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .nav ul {
+      list-style: none;
+    }
+
+    .nav ul li {
+      display: inline-block;
+      padding: 10px;
+      width: 150px;
+
+    }
+
+    .nav a:link,
+    .nav a:visited {
+      text-decoration: none;
+      font-size: 14px;
+      color: #000;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .nav a:hover,
+    .nav a:focus {
+      background-color: #222;
+      color: #fff;
+    }
+
+    .nav a:active {
+      background-color: red;
+    }
+
+    #intro:target {
+      background-color: blue;
+      color: white;
+    }
+
+    input:checked+label {
+      color: red;
+      font-weight: 800;
+    }
+    input:not([type=radio]){
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 5px;
+      width: 200px;
+    }
+    input:not([type=radio]):hover{
+      border-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <ul>
+      <li><a href="#intro">이용 안내</a></li>
+      <li><a href="#room">객실 소개</a></li>
+      <li><a href="#reservation">예약방법 및 요금</a></li>
+      <li><a href="#">예약하기</a></li>
+    </ul>
+  </nav>
+
+  <form action="" id="signup">
+    <fieldset>
+      <legend>개인정보</legend>
+      <ul>
+        <li>
+          <label for="fullname">이름</label>
+          <input type="text" id="fullname" name="fullname" required>
+        </li>
+        <li>
+          <label for="tel">전화번호</label>
+          <input type="text" id="tel" name="tel">
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <legend>객실형태</legend>
+      <ul>
+        <li>
+          <input type="radio" name="room" id="basic">
+          <label for="basic">기본형 (최대 2인)</label>
+        </li>
+        <li>
+          <input type="radio" name="room" id="family">
+          <label for="family">가족형(최대 8인)</label>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+
+  <div id="intro" class="contents">
+    <h2>이용안내</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate ipsa commodi id ut sapiente?
+      Accusantium quas odit inventore et minima, dolore tempora, cupiditate sit ratione ipsa saepe. Blanditiis, quos.
+    </p>
+  </div>
+  <div id="room" class="contents">
+    <h2>객실소개</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate ipsa commodi id ut sapiente?
+      Accusantium quas odit inventore et minima, dolore tempora, cupiditate sit ratione ipsa saepe. Blanditiis, quos.
+    </p>
+  </div>
+  <div id="reservation" class="contents">
+    <h2>예약방법 및 요금</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate ipsa commodi id ut sapiente?
+      Accusantium quas odit inventore et minima, dolore tempora, cupiditate sit ratione ipsa saepe. Blanditiis, quos.
+    </p>
+  </div>
+</body>
+
+</html>

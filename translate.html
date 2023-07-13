@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 1000px;
+      height: 200px;
+      margin: 20px auto;
+    }
+    .origin {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+      float: left;
+      margin: 40px;
+    }
+    .origin>div {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+    }
+    #movex:hover {
+      /* transform: translateX(50px); */
+      transform: scalex(2);
+    }
+    #movey:hover {
+      /* transform: translateY(-50px); */
+      transform: scaleY(1.5);
+    }
+    #movexy:hover{
+      /* transform: translate(10px, 20px); */
+      transform: scale(0.7);
+    }
+    #skewx:hover{
+      transform: skewX(30deg)
+    }
+    #skewy:hover {
+      transform: skewy(40deg);
+    }
+    #skewxy:hover {
+      transform: skew(-20deg, -40deg);
+    }
+    #rotate1:hover {
+      transform: rotate(40deg);
+    }
+    #rotate2:hover {
+      transform: rotate(-40deg);
+    }
+
+    .origin2{
+      width: 152px;
+      height: 180px;
+      border: 1px solid black;
+      margin:30px;
+      float:left;
+    }
+    .rotatex2:hover {
+      transform: rotatex(50deg);
+
+    }
+    #pers {
+      perspective: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="origin">
+      <div id="movex"></div>
+    </div>
+    <div class="origin">
+      <div id="movey"></div>
+    </div>
+    <div class="origin">
+      <div id="movexy"></div>
+    </div>
+    <div class="origin" id="skew1">
+      <div id="skewx"></div>
+    </div>
+    <div class="origin" id="skew2">
+      <div id="skewy"></div>
+    </div>
+    <div class="origin" id="skew3">
+      <div id="skewxy"></div>
+    </div>
+    <div class="origin" id="rotate1">
+      <img src="images/bg2.png" alt="">
+    </div>
+    <div class="origin" id="rotate2">
+      <img src="images/bg2.png" alt="">
+    </div>
+    
+  </div>
+  <!-- <h2>원본이미지</h2> -->
+  <div  class="origin2">
+    <img src="images/sunset.jpg" alt="">
+  </div>
+  <div class="origin2">
+    <div class="rotatex2">
+      <img src="images/sunset.jpg" alt="">
+    </div>
+  </div>
+  <div class="origin2" id="pers">
+    <div class="rotatex2">
+      <img src="images/sunset.jpg" alt="">
+    </div>
+  </div>
+</body>
+</html>

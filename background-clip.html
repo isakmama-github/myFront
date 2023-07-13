@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .desc {
+      border: 5px dotted black;
+      background-color: coral;
+      width: 350px;
+      height:auto;
+      padding: 20px;
+      margin-right: 20px;
+      float:left;
+    }
+    #clip-padding{
+      background-clip: padding-box;
+    }
+    #clip-content {
+      background-clip: content-box;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="desc" id="clip-border">
+      <h1>제목1</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt nihil adipisci quo? Possimus excepturi beatae veritatis facere quas, non magnam labore, itaque incidunt modi atque autem, provident fugiat vel impedit?</p>
+    </div>
+    <div class="desc" id="clip-padding">
+      <h1>제목2</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet veniam nesciunt ut voluptates sint quidem eligendi iusto eius laudantium quo fugiat excepturi amet nisi, quibusdam quaerat eum quasi culpa! Aperiam.</p>
+    </div>
+    <div class="desc" id="clip-content">
+      <h1>제목3</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique maiores nulla iusto enim nobis, quisquam dolore praesentium neque suscipit amet nihil saepe exercitationem aperiam minus? Blanditiis error qui maiores illo?</p>
+    </div>
+  </div>
+</body>
+</html>
