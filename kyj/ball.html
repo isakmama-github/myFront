@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.onload = function () {
+      const NBALL = 200; //공의 갯수
+      const R = 5; //공의 반지름
+      const TIME_INTERVAL = 33; //ms 애니메이션 시간 간격
+      const BACK_ALPHA = 0.3; //배경의 알파값
+      // canvas의 랜더링 컨테스트 가져오기
+      const canvas = document.getElementById('mycanvas');
+      const ctx = canvas.getContext('2d');
+      
+
+      //벽을 표현하는 객체
+      const wall = {
+        left: 0,
+        right: canvas.width,
+        top: 0,
+        bottom: canvas.height
+      };
+      // 공 객체를 만들어 넣을 배열
+      let balls = [];
+      for (let i = 0; i < NBALL; i++) {
+        balls[i] = new Ball(wall.right/2, wall.bottom/2 , R);
+        // Velocity 속도                                     min값, max값
+        balls[i].setVelocityAsRandom(2, 7).setColorAsRandom(50, 255);
+      }
+
+      setInterval(drawFrame, TIME_INTERVAL);
+      console.log(ctx);
+      function drawFrame(){
+        ctx.fillStyle = 'rgba(0,0,0,' + BACK_ALPHA +')';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        for (i = 0; i < balls.length ; i++){
+          balls[i].move().collisionWall(wall).draw(ctx);
+        }
+      }
+
+    };
+    // x=가로 y=세로 r=반지름 vx=가로 속도 vy= 세로 속도 color=공의 색깔
+    function Ball(x, y, r, vx, vy, color) {
+      this.x = x;
+      this.y = y;
+      this.r = r;
+      this.vx = vx;
+      this.vy = vy;
+      this.color = color;
+    }
+
+    Ball.prototype = {
+      // 불규칙한 속도를 리턴해줌.
+      setVelocityAsRandom: function (vmin, vmax) {
+        let v = vmin + Math.random() * (vmax - vmin);
+        let t = 2 * Math.PI * Math.random();
+        this.vx = v * Math.cos(t);
+        this.vy = v * Math.sin(t);
+        return this; //여기서 this란 Ball에 만든 이것들을 리턴 해주는 의미 
+      },
+      // 랜덤으로 숫자에 R을 구하다. rgb의 r 이다.
+      // 색상을 뽑는 것.
+      // Math.floor => 바닥에 버림. 버린다는 의미다.
+      setColorAsRandom: function (lmin, lmax) {
+        let R = Math.floor(lmin + Math.random() * (lmax - lmin));
+        let G = Math.floor(lmin + Math.random() * (lmax - lmin));
+        let B = Math.floor(lmin + Math.random() * (lmax - lmin));
+        this.color = 'rgb(' + R + ',' + G + ',' + B + ')';
+        return this;
+      },
+
+      draw: function(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, true);
+        ctx.fill();
+        return this;
+      },
+
+
+      move: function () {
+        this.x += this.vx;
+        this.y += this.vy;
+        return this;
+      },
+      //충돌났을 때 콜리젼이라 함.
+      collisionWall: function(wall) {
+        if (this.x - this.r < wall.left) {
+          this.x = wall.left + this.r;
+          if (this.vx < 0) this.vx *= -1;
+          
+        }
+
+        if (this.x + this.r > wall.right) {
+          this.x = wall.right - this.r;
+          if (this.vx > 0) this.vx *= -1; //한줄일 경우 중괄호 생략가능
+        }
+
+        if(this.y - this.r < wall.top){
+          this.y = wall.top + this.r;
+          if (this.vy < 0) this.vy *= -1;
+        }
+
+        if(this.y + this.r > wall.bottom){
+          this.y = wall.bottom - this.r;
+          if (this.vy > 0) this.vy *= -1;
+        }
+        return this;
+      }
+
+    };
+    
+  </script>
+</head>
+
+<body>
+  <canvas id="mycanvas" width="640" height="480"></canvas>
+</body>
+
+</html>

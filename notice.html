@@ -1,16 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="css/notice.css"
+  <style>
+    #container {
+      background: url('../images/notice.jpg');
+      background-size: auto;
+      width: 250px;
+      height: 375px;
+      padding: 100px 50px;
+    }
+
+    * {
+      /* 전체 선택자 */
+      box-sizing: border-box;
+    }
+
+    body {
+      /* 문서 본문에 대한 스타일 */
+      display: flex;
+      /* 플렉스 컨테이너 */
+      justify-content: center;
+      /* 주축(수평) 정렬 */
+      align-items: center;
+      /* 교차축(수직) 정렬 */
+      margin: 0;
+      /* 마진 */
+      min-height: 100vh;
+      /* 최소 높이 */
+    }
+    #clock {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    button{
+      margin: 100px auto;
+      text-align: center;
+    } 
+  </style>
 </head>
+
 <body>
   <div id="container">
     <h1>공지사항</h1>
     <p>텍스트 1</p>
     <p>텍스트 2</p>
+    <p>현재시각 <span id="clock"></span></p>
+    <button onclick="javascript:window.close();">닫기</button>
   </div>
 </body>
+<script>
+  const auto_1 = setInterval(function(){
+    const now = new Date();
+    document.getElementById('clock').innerHTML = `${now.getHours()}:${now.getMinutes()}:${00+now.getSeconds()}`;
+      // console.log("addNum : " + addNum);
+    }, 100);
+</script>
 </html>
