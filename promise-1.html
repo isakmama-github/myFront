@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log("A");
+    setTimeout(() => {console.log("B");}, 0);  
+         // 0초후 실행토록 예약되지만 호출 스택에 남아있는 작업이 끝날때까지 기다림 
+    console.log("B");
+
+    
+  </script>
+</body>
+</html>

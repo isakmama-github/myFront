@@ -27,11 +27,15 @@
     const scr_h = scr.height;
     const avail_w = scr.availWidth;
     const avail_h = scr.availHeight;
+    const colorDepth = screen.colorDepth;
+    const pixelDepth = screen.pixelDepth;
 
     document.write("모니터 해상도 너비 : " + scr_w + "px", "<br>");
     document.write("윈도우 작업표시 제외 너비 : " + avail_w + "px", "<br>");
     document.write(`모니터 해상도 높이 : ${ scr_h }px`, "<br>");
-    document.write(`윈도우 작업 표시줄 제외 높이 : ${ avail_h}px`)
+    document.write(`윈도우 작업 표시줄 제외 높이 : ${ avail_h}px <br>`)
+    document.write(`화면의 색상 심도 : ${colorDepth} <br>`);
+    document.write(`화면의 비트 심도 : ${pixelDepth} <br>`);
   </script>
 </body>
 </html>

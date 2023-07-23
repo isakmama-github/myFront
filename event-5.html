@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <a href="https://www.keduit.com" id="school">한국정보교육원</a>
+
+  <script>
+    const anchor = document.getElementById("school");
+    anchor.addEventListener("click", (e) => {
+      if(!confirm("페이지를이동하시겠습니까?")) e.preventDefault();
+    }, false);
+  
+  </script>
+</body>
+</html>

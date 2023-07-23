@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="/images/easys-1.jpg" alt="1" id="cover">
+  <div id="box">click me</div>
+
+  <script>
+    const cover = document.getElementById("cover");
+    cover.addEventListener("mouseover", () => {
+      cover.src = "../images/easys-2.jpg";
+    });
+    cover.addEventListener("mouseout", () => {
+      cover.src = "../images/easys-1.jpg";
+    });
+    const clickme = document.getElementById("box");
+    clickme.addEventListener("click", (e)=>{
+      e.currentTarget.style.backgroundColor = "orange";
+    });
+  </script>
+</body>
+</html>

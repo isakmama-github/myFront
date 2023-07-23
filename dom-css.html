@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 600px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    #rect {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+      margin: 30px auto;
+      transition: 1s;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <p>도형 위로 마우스를 올리세요.</p>
+    <div id="rect"></div>
+  </div>
+  <script>
+    let myRect = document.querySelector("#rect");
+    myRect.addEventListener("mouseover", ()=>{
+      myRect.style.backgroundColor = "green";
+      myRect.style.borderRadius = "50%";
+    });
+    myRect.addEventListener("mouseout", () => {
+      myRect.style.backgroundColor = "";
+      myRect.style.borderRadius = "";
+    });
+  </script>
+</body>
+</html>
