@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+
+<body>
+  <div class="card-bady">
+    <h2>인천광역시 부평구_종량제봉투 판매정보</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>판매처명</td>
+            <!-- <td>도로명 주소</td> -->
+            <td>우편번호</td>
+            <td>대형폐기물스티커취급여부</td>
+            <!-- <td>음식물납부필증(120L)취급여부</td>
+            <td>음식물납부필증(가정용)취급여부</td> -->
+            <td>종량제봉투취급여부</td>
+            <td>특수규격봉투취급여부</td>
+          </tr>
+        </thead>
+        <tbody id="container"></tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    $(() => {
+      $.get('https://api.odcloud.kr/api/15094978/v1/uddi:8cf61b3d-3f3e-4ed1-9c74-e2b4711c73c7?page=1&perPage=791&serviceKey=d2G3GCD43pCx63NYorgTo%2Fb2U3GkiLYtFNegCf%2BCuL2Xv7SHQR5NJy%2B6MkMZgodkfanMSC%2BgFK28wnQYillMWQ%3D%3D',
+        function (data) {
+          console.log(data.data[0]);
+          data.data.forEach((item, index) => {
+            // console.log(item);
+            // console.log(index);
+
+            let tmp = '<tr>';
+            tmp += '<td>' + item.판매처명 + '</td>';
+            // tmp += '<td>' + item.도로명 주소 + '</td>';
+            tmp += '<td>' + item.우편번호 + '</td>';
+            tmp += '<td>' + item.대형폐기물스티커취급여부 + '</td>';
+            // tmp += '<td>' + item.음식물납부필증(120L)취급여부 + '</td>';
+            // tmp += '<td>' + item.음식물납부필증(가정용)취급여부 + '</td>';
+            tmp += '<td>' + item.종량제봉투취급여부 + '</td>';
+            tmp += '<td>' + item.특수규격봉투취급여부 + '</td>'; 
+
+            $(tmp).appendTo('#container'); 
+          });
+        });
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="card-body">
+    <h2>23년 7월 7일 영화</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>movieRank</td>
+            <td>movieCd</td>
+            <td>movieNm</td>
+            <td>openDt</td>
+          </tr>
+        </thead>
+        <tbody id="container">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    $(()=>{
+      $.get('http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=ecb855736db57c5e90326493ee9f1f47&targetDt=20230724',
+      function(data){
+        console.log(data);
+        data.boxOfficeResult.dailyBoxOfficeList.forEach(function(item,index){
+          console.log(item);
+          console.log(index);
+          let temp = '<tr>';
+          temp += '<td>' + item.rank +" 위 </td>";
+          temp += '<td>' + item.movieCd + '</td>';
+          temp += '<td>' + item.movieNm + '</td>';
+          temp += '<td>' + item.openDt + '</td>';
+          temp += '</tr>';
+          $(temp).appendTo("#container");
+        })
+      })
+    });
+  </script>
+</body>
+
+</html>

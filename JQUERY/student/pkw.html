@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      img{
+        width :500px;
+        height: 300px;
+      }
+    </style>
+</head>
+<body>
+  <div class="card-body">
+    <h2>콘솔</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>tel</td>
+            <td>address</td>
+            <td>photo</td>
+          </tr>
+        </thead>
+        <tbody id="container">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    $(()=>{
+
+      // $.getJSON('https://apis.data.go.kr/B551011/KorService1/searchKeyword1?numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=test&_type=json&keyword=%EC%88%98%EC%9B%90&contentTypeId=12&areaCode=31&sigunguCode=13&serviceKey=us4Fiy441dqznBPMgd2qWLn1P9o27TwloMzIrEHJVR%2B%2Bwts9bswQsXuFz687EeyFYKq8ZJuEXoUghXU2V1KdaA%3D%3D'
+      $.getJSON('https://apis.data.go.kr/B551011/KorService1/searchKeyword1'
+      ,{
+        pageNo:1,
+        numOfRows:20,
+        MobileOS :'ETC',
+        MobileApp:'test',
+        serviceKey: 'us4Fiy441dqznBPMgd2qWLn1P9o27TwloMzIrEHJVR++wts9bswQsXuFz687EeyFYKq8ZJuEXoUghXU2V1KdaA==',
+        keyword:'수원',
+        _type:'json',
+        contentTypeId : '12',
+        areaCode : '31',
+        sigunguCode : '13'
+      }
+      ,
+      function(data){
+        console.log(data.response.body.items.item);
+        for(let item of data.response.body.items.item){
+        // data.response.body.items.item.forEach(function(item, index){
+          let temp =
+          `<tr>
+            <td>${item.addr1}</td>;
+            <td>${item.title}</td>;
+            <td><img src=${item.firstimage}></td>;
+            <td>${item.mapx}</td>;
+            <td>${item.mapy}</td>;
+          </tr>`;
+            console.log(temp);
+            $(temp).appendTo("#container");
+        }
+      });
+    })
+  </script>
+</body>
+</html>

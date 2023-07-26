@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+  <script>
+    $(function(){
+      $("input[name='user-id-1'], input[name='user-pw-1']").on("focus",
+        function(){
+          $(this).css({
+            "background-color":"pink"
+          });
+        });
+      $("input[name='user-id-1'], input[name='user-pw-1']").on("blur",
+        function(){
+          $(this).css({
+            "background-color":"white"
+          });
+        });
+
+      $("#fm_2").on("focusin",
+        function(){
+          $(this).css({
+            "background-color":"pink"
+          });
+        });
+      $("#fm_2").on("focusout",
+        function(){
+          $(this).css({
+            "background-color":"white"
+          });
+        });
+
+    })
+</script>
+</head>
+<body class="card-body">
+  <h1>focus / blur</h1>
+  <form action="#">
+    <div class="form-group">
+      <label for="user-id-1">ID</label>
+      <input type="text" name="user-id-1"  class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="user-pw-1">Password</label>
+      <input type="text" name="user-pw-1"  class="form-control">
+    </div>
+  </form>
+  <h1>focusin / focusout</h1>
+  <form action="#" id="fm_2">
+    <div class="form-group">
+      <label for="user-id-2">ID</label>
+      <input type="text" name="user-id-2"  class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="user-pw-2">Password</label>
+      <input type="text" name="user-pw-2"  class="form-control">
+    </div>
+  </form>
+</body>
+</html>

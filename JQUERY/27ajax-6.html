@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>addItem</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+  <script>
+    $(()=>{
+      $('#send').click(function(){
+        const name = $('input[name="name"]').val();
+        const tel = $('input[name="tel"]').val();
+        const address = $('input[name="address"]').val()
+        console.log(name + " "+ tel + " " + address);
+
+        $.ajax({
+          method: "POST",
+          url: "http://sample.bmaster.kro.kr/contacts",
+          data: {name : name, tel:tel, address:address},
+          success: function(data){
+            console.log(data);
+            console.log(data.status);
+            location.assign("24ajax-5.html");
+          },
+          error: function(error){
+            console.log(error.status);
+          }
+        })
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="card-body">
+    <h3>게시물 추가</h3>
+
+    Name: <input type="text" class="form-control" name="name" />
+    Tel: <input type="text" class="form-control" name="tel" />
+    Address: <input type="text" class="form-control" name="address" />
+    <br/>
+
+    <button class="btn btn-primary" id="send">ADD</button>
+  </div>
+</body>
+</html>

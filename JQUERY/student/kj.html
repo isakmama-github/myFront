@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <div class="card-body">
+    <h2>콘솔을 확인하세요.</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>영화이름</td>
+            <td>영화순위</td>
+            <td>개봉일</td>
+          </tr>
+        </thead>
+        <tbody id="container">
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    $(()=>{
+      $.get("http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20120101", function(data){
+        data.boxOfficeResult.dailyBoxOfficeList.forEach(function(item, index){
+          console.log(item);
+          console.log(index);
+          let temp = '<tr>';
+            temp += '<td>' + item.movieNm + '</td>';
+            temp += '<td>' + item.rank + '</td>';
+            temp += '<td>' + item.movieCd + '</td>';
+            temp += '<tr>';
+              $(temp).appendTo("#container");
+        })
+      })
+    })
+  </script>
+</body>
+</html>

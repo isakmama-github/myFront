@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+  <div class="card-body">
+    <h2>일일 코로나 확진자 현황</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>일일확진비율</td>
+            <td>일일확진자</td>
+            <td>일일사망자</td>
+            <td>날짜</td>
+          </tr>
+        </thead>
+        <tbody id="container"></tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    $(()=> {
+      $.get("https://apis.data.go.kr/1790387/covid19CurrentStatusKorea/covid19CurrentStatusKoreaJason?serviceKey=r4kWSL5C%2F9%2BxRTyinZz3aBFJmC3WcGZkL6Iih7nDBxzDaTFozYRd2ORaeqSFZJ29p%2FRlYebeQv8wie26ND6wgQ%3D%3D", { response:1, result:10 }, 
+      function(data) {
+        console.log(data);
+        data.response.result.forEach(function(item, index) {
+          console.log(item);
+          console.log(index);
+          let temp = "<tr>";
+          temp += "<td>" + item.rate_confirmations + "</td>";
+          temp += "<td>" + item.cnt_confirmations + "</td>";
+          temp += "<td>" + item.cnt_deaths + "</td>";
+          temp += "<td>" + item.mmddhh + "</td>";
+          temp += "</tr>";
+          $(temp).appendTo("#container");
+        });
+      });
+    });
+  </script>
+  
+</body>
+</html>

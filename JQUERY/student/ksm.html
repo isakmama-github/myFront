@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+  </head>
+  <body>
+    <div class="card-body">
+      <h2>콘솔 확인</h2>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>COURSE_NAME</td>
+              <td>DETAIL_COURSE</td>
+              <td>LEAD_TIME</td>
+              <td>DISTANCE</td>
+              <td>COURSE_LEVEL</td>
+            </tr>
+          </thead>
+          <tbody id="container"></tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      $(() => {
+        $.get(
+          "http://openapi.seoul.go.kr:8088/4e5242755a6b736d39396b48567642/json/walkDulaeInfo/1/5/",
+          function (data) {
+            console.log(data);
+            if (data.walkDulaeInfo) {
+              // 유효성 검사를 추가하여 'forEach' 메서드 호출 이전에 데이터가 존재하는지 확인합니다.
+              data.walkDulaeInfo.row.forEach(function (item, index) {
+                let temp = "<tr>";
+                temp += "<td>" + item.COURSE_NAME + "</td>";
+                temp += "<td>" + item.DETAIL_COURSE + "</td>";
+                temp += "<td>" + item.LEAD_TIME + "</td>";
+                temp += "<td>" + item.DISTANCE + "</td>";
+                temp += "<td>" + item.COURSE_LEVEL + "</td>";
+
+                temp += "</tr>";
+                $(temp).appendTo("#container");
+              });
+            } else {
+              console.log("Data not found or invalid format.");
+            }
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

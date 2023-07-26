@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>A01 Get</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// const key = "ace8657116bb0d8f13abaf43c62fc699";
+      // const url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key="
+    	// 			+ key + "&movieCd=20124039";
+
+			// const url = 'http://isakmama.dothome.co.kr/test.txt';
+
+			const url = 'https://jsonplaceholder.typicode.com/posts';
+
+      /*
+			$.get(url, function(data){
+				 console.log(data);
+				 data.forEach(function(item, index){
+					var temp = '<tr>'
+		   			temp += '<td>' + item.id + '</td>';
+			 			temp += '<td>' + item.title + '</td>';
+			 			temp += '<td>' + item.body + '</td>';
+			 			temp += '<td>' + item.userId + '</td>';
+					  temp += '</tr>';
+
+					  $(temp).appendTo('#container')
+				});
+			});
+      */
+			
+			$.ajax({
+				mathod: 'GET', 
+				url: 'https://jsonplaceholder.typicode.com/posts',
+				//data: {pageno:1, pagesize:10},
+				success: function(data) {
+          console.log(data);
+					data.forEach(function(item, index){
+						var temp = '<tr>'
+						temp += '<td>' + item.id + '</td>';
+						temp += '<td>' + item.title + '</td>';
+						temp += '<td>' + item.body + '</td>';
+						temp += '<td>' + item.userId + '</td>';
+						// temp += '<td><img src="' + item.photo + '" alt="증명사진" width="50px"></td>';
+						temp += '</tr>';
+
+						$(temp).appendTo('#container')
+					});
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			})
+		});
+	</script>
+
+</head>
+
+<body>
+	<div class="card-body">
+		<h2>console을 확인합니다.</h2>
+
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Title</td>
+						<td>Body</td>
+						<td>userId</td>
+						<!-- <td>Photo</td> -->
+					</tr>
+				</thead>
+
+				<tbody id="container"></tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>

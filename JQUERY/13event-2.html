@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+  <script>
+    $(() => {
+      $(document).ready(function(){
+        const h1 = $("img").height();
+        console.log("ready : ", h1);
+      });
+      $(window).load(function(){
+        const h2 = $("img").height();
+        console.log(`load : ${h2}`);
+      })
+    })
+  </script>
+</head>
+<body>
+  <p><img src="../images/bg0.jpg" alt="flower"></p>
+</body>
+</html>

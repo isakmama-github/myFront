@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+  <script>
+    $(() =>{
+      let baseFontSize = 14;
+      $(".zoombtnZone button").on("click", zoomInOut);
+      function zoomInOut(e){
+        if($(e.target).hasClass("zoomOutBtn")){
+          if(baseFontSize<=8){ return false;}
+          baseFontSize--;
+        } else if($(e.target).hasClass("zoomInBtn")){
+          if(baseFontSize> 24){ return false;}
+          baseFontSize++;
+        } else {
+          baseFontSize = 14;
+        }
+        $(".fontSize").text(baseFontSize + "px");
+        $("body").css({fontSize:baseFontSize + "px"});
+      }
+    })
+  </script>
+</head>
+<body class="card-body">
+  <p class="zoombtnZone">
+    <button class="zoomOutBtn">-</button>
+    <button class="originBtn">100%</button>
+    <button class="zoomInBtn">+</button>
+  </p>
+  <p class="fontSize">14px</p>
+  <div id="wrap">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis doloremque voluptates sint nobis iste est, officiis rerum laborum. Iusto, quidem commodi. Saepe adipisci consequuntur rem, labore reiciendis necessitatibus nisi vel.
+    Magnam eligendi omnis et, aut officia labore consequuntur saepe accusantium unde amet rerum dolore totam placeat soluta! Doloremque sequi harum odit reiciendis modi fugit optio, exercitationem, molestiae excepturi fuga vitae.
+    Dolor ipsum magni, neque voluptatem dicta quisquam ratione natus accusamus impedit! Possimus suscipit similique ullam dolores officia? Ex ullam quo nostrum saepe deserunt eos dolorem temporibus quidem. Voluptates, harum tempora?
+    Labore magnam eligendi repellendus excepturi, possimus optio accusantium. Tempora cum provident perferendis repellendus. Eveniet impedit consequuntur vitae reiciendis id iure consequatur. Hic aut repudiandae odit voluptates, vitae blanditiis laboriosam est!
+    Possimus ratione, maxime culpa recusandae adipisci iusto non mollitia accusantium alias neque cumque libero, eveniet itaque aspernatur, accusamus voluptate quo eligendi perferendis at incidunt natus a. Nobis quas tempore veritatis.
+    Alias quod asperiores incidunt a voluptatibus neque ut doloremque beatae laudantium quidem, quam quisquam! Magnam, id. Earum sed dicta obcaecati necessitatibus provident neque corporis aliquid delectus dignissimos, perferendis sequi ut?
+    Maxime numquam quidem incidunt non? Quae quos repellat nihil esse aliquam dolorem illum nam inventore nemo officiis et, vel sunt? Ad numquam doloribus, accusamus quod ex cumque nam iste iusto?
+    Ea ad, iure dicta consectetur nulla placeat accusantium voluptate perspiciatis cum reprehenderit magnam nesciunt odit iusto soluta necessitatibus saepe odio quas quae! Reprehenderit harum quos quia? Deserunt repudiandae amet eos.
+    Sapiente rerum, porro nemo architecto assumenda dolorem quaerat tempore nobis ullam animi, dignissimos quas magnam saepe itaque sint sequi aperiam. Quidem neque eaque minima iste nostrum ipsum fugit ratione ducimus.
+    Officiis quaerat sint recusandae dicta totam facere ullam voluptate, animi explicabo natus provident sapiente nesciunt fugit distinctio, aperiam deleniti, obcaecati adipisci aut aliquid repellendus nobis! Beatae, ratione at? Sapiente, consequuntur.
+  </div>
+  
+</body>
+</html>

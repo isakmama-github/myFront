@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <h1>따릉이 정거장 현황</h1>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>정거장 ID</td>
+            <td>정거장 이름</td>
+            <td>거치된 자전거 수</td>
+            <td>거치대 수</td>
+            <td>거치율</td>
+          </tr>
+        </thead>
+        <tbody class="container"></tbody>
+      </table>
+    </div>
+    <script>
+      // $(() => {
+      //   let url =
+      //     "http://openapi.seoul.go.kr:8088/786a6b78486b616e39316376734d53/json/bikeList/1001/2000";
+      //   $.getJSON(url, function (data) {
+      //     data.rentBikeStatus.row.forEach(function (item) {
+      // let temp = "<tr>";
+      // temp += "<td>" + item.stationId + "</td>";
+      // temp += "<td>" + item.stationName + "</td>";
+      // temp += "<td>" + item.parkingBikeTotCnt + "</td>";
+      // temp += "<td>" + item.rackTotCnt + "</td>";
+      // temp += "<td>" + item.shared + "</td></tr>";
+      // $(".container").append(temp);
+      //     });
+      //   });
+      // });
+      $(() => {
+        let url =
+          "http://openapi.seoul.go.kr:8088/786a6b78486b616e39316376734d53/json/bikeList/1001/2000";
+        $.getJSON(url)
+          .done(function (data, textStatus, jqXHR) {
+            // console.log(textStatus);
+            // console.log(jqXHR);
+            $.each(data.rentBikeStatus.row, function (i, item) {
+              let temp = "<tr>";
+              temp += "<td>" + item.stationId + "</td>";
+              temp += "<td>" + item.stationName + "</td>";
+              temp += "<td>" + item.parkingBikeTotCnt + "</td>";
+              temp += "<td>" + item.rackTotCnt + "</td>";
+              temp += "<td>" + item.shared + "</td></tr>";
+              $(".container").append(temp);
+            });
+          })
+          .fail(function (jqXHR, textStatus, errorThrown) {
+            alert("에러 발생");
+            console.log(jqXHR);
+            console.log(textStatus);
+          });
+      });
+    </script>
+  </body>
+</html>

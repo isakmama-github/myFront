@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    #data_table>tr {
+      content: "";
+      cursor: pointer;
+    }
+
+    #tete {
+      position: absolute;
+
+
+
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script>
+    $(() => {
+
+      $.get('http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json', { key: '481912bf7a55edaeb5acc6f306aa15ec', targetDt: '20230724' }, function (data) {
+        data['boxOfficeResult']['dailyBoxOfficeList'].forEach(function (item) {
+          let temp = '<tr class="' + item.movieCd + '">';
+          temp += '<td>'+ item.rank + '</td>';
+          temp += '<td>'+ item.movieNm + '</td>';
+          temp += '</tr>';
+          let temp2 = item.movieCd;
+          $('#data_table').append(temp);
+        });
+      });
+      $(document).on('click', 'tr', function (e) {
+
+        let tmp = this;
+        $.get('http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json', { key: '481912bf7a55edaeb5acc6f306aa15ec', movieCd: this.className }, function (data) {
+          let genre = "";
+          data.movieInfoResult.movieInfo.genres.forEach((p) => {
+            if (genre !== "")
+              genre += ", ";
+            genre += p.genreNm;
+          });
+          let datestr = data.movieInfoResult.movieInfo.openDt;
+          let newdate = datestr.substr(0, 4) + '년 ' + datestr.substr(4, 2) + '월 ' + datestr.substr(6, 2) + '일';
+
+          let temp = `<section style="position: absolute; top: ${e.clientY}px; left: ${e.clientX}px; background-color: black; color: white; padding: 20px;">
+            <h3> ${data.movieInfoResult.movieInfo.movieNm} </h3>
+            <table>
+            <tr><td>개봉일</td><td style="padding-left: 20px;">${newdate}</td></tr>
+            <tr><td>상영시간</td><td style="padding-left: 20px;">${data.movieInfoResult.movieInfo.showTm}분</td></tr>
+           <tr><td>장르</td><td style="padding-left: 20px;">${genre}</td></tr>
+            </table>
+            </section>`;
+
+          $('.card-body').next().replaceWith(temp);
+          $('.card-body').next()[0].onclick = function(e){
+            this.replaceWith(document.createElement('section'));
+          };
+        });
+      });
+
+
+
+
+    });
+  </script>
+</head>
+
+<body>
+  <section class="card-body">
+    <h2>일별 박스 오피스 <span id="table_date"></span></h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <td>순위</td>
+          <td>영화명</td>
+        </tr>
+      </thead>
+      <tbody id="data_table">
+      </tbody>
+    </table>
+  </section>
+  <section></section>
+</body>
+
+</html>

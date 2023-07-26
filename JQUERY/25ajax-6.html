@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX get</title>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="card-body">
+    <h2>콘솔을 확인하세요.</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Tel</td>
+            <td>Address</td>
+            <td>Photo</td>
+          </tr>
+        </thead>
+        <tbody id="container"></tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+
+    $(()=>{
+
+      // $.get('http://sample.bmaster.kro.kr/contacts', {pageno:1, pagesize:10},
+      //   function(data){
+      //     // console.log(data);
+      //     data.contacts.forEach(function(item, index){
+      //       // console.log(item);
+      //       // console.log(index);
+      //       let temp = '<tr>';
+      //       temp += '<td>' + item.no + '</td>';
+      //       temp += '<td>' + item.name + '</td>';
+      //       temp += '<td>' + item.tel + '</td>';  
+      //       temp += '<td>' + item.address + '</td>';  
+      //       temp += '<td><img src="' + item.photo + '" alt="증명사진" width="50px"></td>';  
+      //       temp += '</tr>';
+      //       $(temp).appendTo("#container");
+      //     });
+      //   });
+      // $.get, $.post, $getJSON
+      $.ajax({ 
+        type: "GET",
+        url: 'http://sample.bmaster.kro.kr/contacts_long',
+        data: {pageno:1, pagesize:10},
+        dataType: "json",   //"html" "xml" "text" "jsonp"
+        beforeSend: function(xhr, setting){
+
+        },
+        success: function(data){
+          // console.log(data);
+          data.contacts.forEach(function(item, index){
+            // console.log(item);
+            // console.log(index);
+            let temp = '<tr>';
+            temp += '<td>' + item.no + '</td>';
+            temp += '<td>' + item.name + '</td>';
+            temp += '<td>' + item.tel + '</td>';  
+            temp += '<td>' + item.address + '</td>';  
+            temp += '<td><img src="' + item.photo + '" alt="증명사진" width="50px"></td>';  
+            temp += '</tr>';
+            $(temp).appendTo("#container");
+          });
+
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
+  </script>
+</body>
+</html>

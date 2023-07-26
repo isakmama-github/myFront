@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax 로딩</title>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <section class="container">
+    <h2>jQuery Ajax 문서 로딩 메소드 - load()</h2>
+    <article class="data">
+      <input type="button" id="btn1" value="Success button"/>
+      <input type="button" id="btn2" value="Target button"/>
+      <input type="button" id="btn3" value="Json button"/>
+      <div>result : </div>
+      <div id="result"></div>
+    </article>
+  </section>
+  <script>
+    $(document).ready(function(){
+      $("#btn1").click(function(){
+        $('#result').load("test.html #language li");
+      });
+
+      $("#btn2").click(function(){
+        $("#result").load("error.html", function(response, status, xhr){
+          if (status == "error"){
+            const msg = "문서의 내용을 불러오지 못했습니다.";
+            $("#result").html(msg + " " + xhr.status + " " + xhr.statusText);
+          }
+        })
+      });
+      $("#btn3").click(function(){
+        $('#result').load("data.json");
+      })
+    })
+  </script>
+</body>
+</html>

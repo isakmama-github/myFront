@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+  <div class="card-body">
+    <h2>K-MOOC</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>org_name</td>
+            <td>teachers</td>
+            <td>level</td>
+            <td>image</td>
+          </tr>
+        </thead>
+        <tbody id="container"></tbody>
+      </table>
+    </div>
+  </div>
+  <!-- <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: 'http://apis.data.go.kr/B552881/kmooc/courseList?ServiceKey=d07%2FSorIUYvq53lXRMjxXTqLPpBd3Z6bLfSjQMAuOMZMdYvDC%2FGgfDI37VlbjA3yNEDvT5afThFRlMlfZfN7Fw%3D%3D&page=1',
+        type: 'GET',
+        success: function (data) {
+          console.log(data);
+          data.results.forEach(function (item, index) {
+            console.log(item.media.image);
+            console.log(index);
+            let temp = '<tr>';
+            temp += '<td>' + item.id + '</td>';
+            temp += '<td>' + item.name + '</td>';
+            temp += '<td>' + item.org_name + '</td>';
+            temp += '<td>' + item.teachers + '</td>';
+            temp += '<td>' + item.level + '</td>';
+            temp += '<td><img src="' + item.media.image.large + '" alt = "이미지" width = "100px"> </td>';
+            temp += '</tr>';
+            console.log(temp);
+            $(temp).appendTo('#container');
+          });
+        }
+      });
+    });
+  </script> -->
+  <script>
+    $(() => {
+      $.get('http://apis.data.go.kr/B552881/kmooc/courseList?ServiceKey=d07%2FSorIUYvq53lXRMjxXTqLPpBd3Z6bLfSjQMAuOMZMdYvDC%2FGgfDI37VlbjA3yNEDvT5afThFRlMlfZfN7Fw%3D%3D&page=1', function (data) {
+        console.log(data);
+        data.results.forEach(function (item, index) {
+          console.log(item.media.image);
+          console.log(index);
+          let temp = '<tr>';
+          temp += '<td>' + item.id + '</td>';
+          temp += '<td>' + item.name + '</td>';
+          temp += '<td>' + item.org_name + '</td>';
+          temp += '<td>' + item.teachers + '</td>';
+          temp += '<td>' + item.level + '</td>';
+          temp += '<td><img src="' + item.media.image.large + '" alt = "이미지" width = "100px"> </td>';
+          temp += '</tr>';
+          console.log(temp);
+          $(temp).appendTo('#container');
+        });
+      });
+    })
+  </script>
+</body>
+
+</html>

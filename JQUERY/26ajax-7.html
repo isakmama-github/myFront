@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script>
+    $(() => {
+      $.ajax({
+        type: "get",
+        url: "http://sample.bmaster.kro.kr/contacts",
+        beforeSend: function(){
+          console.log("before send method");
+        },
+        success: function(data, status, xhr){
+          console.log("-------------- done -----------------");
+          console.log("Data:" , data);
+          console.log("Status: ", status);
+          console.log("XHR: ", xhr);
+          console.log("");
+        },
+        error: function(status, xhr){
+          console.log("-------------- fail -----------------");
+          console.log("Status: ", status);
+          console.log("XHR: ", xhr);
+          console.log("");
+        },
+        complete: function(data, status){
+          console.log("-------------- always -----------------");
+          console.log("data: ", data);
+          console.log("Status: ", status);
+          console.log("");
+        },
+      })
+    });
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
