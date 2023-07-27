@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 구조 분해 할당
+    const student = {
+      name: "hong",
+      age: 20
+    }
+    console.log(student);
+    console.log(student.name);
+    console.log(student.age);
+    
+    const { name, age } = student;
+    console.log(name, age);
+    console.log(`이름 : ${name}, 나이 : ${age}`);
+    
+    const dog = { name: '해피', age: 3 }
+    const { name, age } = dog;
+
+    const data = {
+      name: '홍길동', age: 20, kor: 100, eng: 80, mat: 70
+    }
+
+    const { name, age, kor, eng, mat } = data
+
+
+    // 널 병합 연산자(Nullish Coalescing Operator)
+    const nameA = null;
+    const userName = nameA || 'guest';
+    console.log(userName);
+
+    const UserName2 = name ?? 'guest';
+    console.log(userName);
+
+    const num = 0;
+    const message = num ?? 'undefined';
+    console.log(message);
+
+
+
+  </script>
+</body>
+
+</html>

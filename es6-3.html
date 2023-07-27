@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 전개 구문(Spread Syntax)
+    const obj = {
+      a: 10,
+      b: 20
+    };
+    let newObj = { ...obj };
+    console.log(newObj); 
+    newObj = { ...obj, c:30, d:40  };
+    console.log(newObj); 
+
+    const arr = [1, 2, 3];
+    let newArr = [...arr];
+    console.log(newArr); 
+    newArr = [100, 200, ...arr, 300];
+    console.log(newArr); 
+
+  </script>
+</body>
+
+</html>
